@@ -4,9 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="images/svg" href="Images/favicon.svg">
-  <title>NejTemata</title>
-  <meta name="google-adsense-account" content="ca-pub-6863032239781691">
-  <meta name="description" content="Nejvyhledávanější témata, trendy vyhledávání a odpovědi na populární otázky z internetu." />
+  <title>NejTémata</title>
+  <meta name="description" content="Clean a přehledná šablona s vyhledáváním nejvyhledávanějších témat." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -31,7 +30,15 @@
     </div>
   </header>
 
-  <main id="obsah">
+  <main id="obsah" class="page-layout">
+    <aside class="ad-rail ad-rail-left" aria-label="Reklamní prostor vlevo">
+      <div class="ad-slot">
+        <p class="ad-label">Reklama</p>
+        <!-- Vlož sem levý AdSense blok (desktop) -->
+      </div>
+    </aside>
+
+    <div class="content-column">
     <section class="search-wrap">
       <div class="container">
         <form class="search" role="search" onsubmit="return false">
@@ -147,6 +154,14 @@
         </div>
       </div>
     </section>
+    </div>
+
+    <aside class="ad-rail ad-rail-right" aria-label="Reklamní prostor vpravo">
+      <div class="ad-slot">
+        <p class="ad-label">Reklama</p>
+        <!-- Vlož sem pravý AdSense blok (desktop) -->
+      </div>
+    </aside>
   </main>
 
   <footer class="footer">
