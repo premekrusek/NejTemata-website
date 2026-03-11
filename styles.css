@@ -280,3 +280,29 @@ a:hover{ text-decoration: underline; }
   gap:16px;
   margin-top:16px;
 }
+
+/* AdSense postranní reklamy */
+
+.ads-left,
+.ads-right{
+  position: fixed;
+  top: 120px;
+  width: 160px;
+  z-index: 1;
+}
+
+.ads-left{
+  left: 20px;
+}
+
+.ads-right{
+  right: 20px;
+}
+
+/* schovat reklamy na malých obrazovkách */
+@media (max-width: 1400px){
+  .ads-left,
+  .ads-right{
+    display:none;
+  }
+}
