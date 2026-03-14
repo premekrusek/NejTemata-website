@@ -94,7 +94,10 @@ async function generate() {
         <div class="detail-card">
           <h1>${topic.title}</h1>
           <p><strong>Rychlá odpověď:</strong> ${topic.answer}</p>
-          <p>${topic.content}</p>
+          <p>${topic.content
+                .split("\n")
+                .map(p => `<p>${p}</p>`)
+                .join("")}</p>
           <h3>Související témata</h2>
           <ul class="related-topics">
             ${data
