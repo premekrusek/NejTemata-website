@@ -18,8 +18,20 @@ async function generate() {
   const cardTemplate = fs.readFileSync("../templates/topic-card.html", "utf8");
 
   let topicsHTML = "";
+  let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
+
+  const today = new Date();
 
   data.forEach(topic => {
+    const from = topic.show_from ? new Date(topic.show_from) : null;
+    const to = topic.show_to ? new Date(topic.show_to) : null;
+    if (from && today < from) return;
+    if (to && today > to) return;
+
+    sitemap += `<url>
+                <loc>https://nejtemata.com/topics/${topic.slug}.html</loc>
+                </url>`;
 
     // vytvoření stránky tématu
 
@@ -95,6 +107,9 @@ ${topicsHTML}
   );
 
   fs.writeFileSync("../index.html", index);
+
+  sitemap += "</urlset>";
+  fs.writeFileSync("../sitemap.xml", sitemap);
 
   console.log("Hotovo! Stránky i index byly vygenerovány.");
 
