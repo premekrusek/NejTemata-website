@@ -95,6 +95,14 @@ async function generate() {
           <h1>${topic.title}</h1>
           <p><strong>Rychlá odpověď:</strong> ${topic.answer}</p>
           <p>${topic.content}</p>
+          <h3>Související témata</h2>
+          <ul class="related-topics">
+            ${data
+                .filter(t => t.slug !== topic.slug && t.tag === topic.tag)
+                .slice(0,3)
+                .map(t => `<li><a href="../topics/${t.slug}.html">${t.title}</a></li>`)
+                .join("")}
+          </ul>
         </div>
       </div>
     </section>
