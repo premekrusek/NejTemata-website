@@ -62,6 +62,21 @@ async function generate() {
   }
   </script>
 
+  <script type="application/ld+json">
+  {
+   "@context": "https://schema.org",
+   "@type": "FAQPage",
+   "mainEntity": [{
+     "@type": "Question",
+     "name": "${topic.title}",
+     "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "${topic.answer}"
+     }
+   }]
+  }
+  </script>
+
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
