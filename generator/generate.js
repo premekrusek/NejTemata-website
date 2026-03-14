@@ -44,6 +44,24 @@ async function generate() {
   <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
   <title>${topic.title}</title>
   <meta name="description" content="${topic.description}" />
+
+  <link rel="canonical" href="https://nejtemata.com/topics/${topic.slug}.html" />
+  <meta property="og:title" content="${topic.title}">
+  <meta property="og:description" content="${topic.description}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://nejtemata.com/topics/${topic.slug}.html">
+  <meta name="twitter:card" content="summary">
+
+  <script type="application/ld+json">
+  {
+   "@context": "https://schema.org",
+   "@type": "Article",
+   "headline": "${topic.title}",
+   "description": "${topic.description}",
+   "url": "https://nejtemata.com/topics/${topic.slug}.html"
+  }
+  </script>
+
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
