@@ -1,10 +1,12 @@
+
 <!doctype html>
 <html lang="cs">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Spánek: jak ho rychle zlepšit (základy)</title>
-  <meta name="description" content="Spánek: jak ho rychle zlepšit (základy)" />
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+  <title>Spánek: jak ho zlepšit</title>
+  <meta name="description" content="Jak rychle zlepšit spánek" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
@@ -12,7 +14,7 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <div class="brand"><span class="dot" aria-hidden="true"></span><div><h1>Nejvyhledávanější témata</h1><p class="sub">Zdraví</p></div></div>
-      <div class="meta"><span class="chip">Detail tématu</span></div>
+      <div class="meta"><span class="chip">Detailní stránka tématu</span></div>
     </div>
   </header>
   <main id="obsah">
@@ -20,18 +22,20 @@
       <div class="container">
         <a class="back-link" href="../index.html">← Zpět na seznam témat</a>
         <div class="detail-card">
-          <span class="tag">Zdraví</span>
-          <h1>Spánek: jak ho rychle zlepšit (základy)</h1>
-          <p>Lidé často hledají jednoduché a rychlé změny, které pomohou se spánkem. Tady je základní přehled návyků, které dávají největší smysl.</p>
-          <div class="detail-grid">
-            <div class="detail-panel"><h2>Rychlé shrnutí</h2><p>Nejvíc pomáhá pravidelnost, omezení světla večer a jednoduchá rutina před spaním. Nepřetěžuj večer hlavu ani telefon.</p></div>
-            <div class="detail-panel"><h2>Co si zkontrolovat</h2><ul><li>Pravidelný čas spánku</li><li>Méně obrazovek večer</li><li>Klidnější prostředí</li><li>Krátká rutina před spaním</li></ul></div>
-          </div>
+          <h1>Spánek: jak ho zlepšit</h1>
+          <p><strong>Rychlá odpověď:</strong> Choď spát každý den ve stejný čas</p>
+          <p>Spánek je důležitý pro regeneraci těla...</p>
         </div>
       </div>
     </section>
-    <section class="detail-section"><div class="container"><div class="long-text"><h2>Podrobněji</h2><p>Spánek bývá první věc, kterou rozhodí stres, nepravidelnost nebo příliš mnoho podnětů večer. I malé změny ale můžou mít znatelný efekt, když se drží několik dní po sobě.</p><p>Na tuhle stránku můžeš doplnit konkrétní tipy, doporučené návyky, časté chyby nebo vlastní text podle toho, na co se chceš zaměřit.</p></div></div></section>
   </main>
-  <footer class="footer"><div class="container footer-inner"><p>© <span id="year"></span> Nejvyhledávanější témata</p><p class="muted">Detailní stránka tématu</p></div></footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Nejvyhledávanější témata</p>
+      <a class="muted" href="../legal/privacy.html">Zásady ochrany osobních údajů</a>
+      <a class="muted" href="../legal/contact.html">Kontakt</a>
+      <a class="muted" href="../legal/about.html">O webu</a>
+      <!--<p class="muted">Jednoduchá šablona • čisté UI • snadná aktualizace</p>-->
+    </div>
+  </footer>  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body></html>

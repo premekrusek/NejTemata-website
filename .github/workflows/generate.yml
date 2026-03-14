@@ -1,0 +1,37 @@
+name: Generate website
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # každých 30 minut
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: |
+          cd generator
+          npm install
+
+      - name: Run generator
+        run: |
+          cd generator
+          node generate.js
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          git commit -m "auto generate website" || echo "no changes"
+          git push
