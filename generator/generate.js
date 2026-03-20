@@ -1,6 +1,8 @@
 const fs = require("fs");
 const fetch = require("node-fetch");
 
+let latestDate = "";
+
 const SHEET_ID = "1ePlQgU0QVQZCbqgACvgRxOyDFlUk2qSQ3Xq_v7H_Xcs";
 const SHEET_NAME = "Sheet1";
 
@@ -24,6 +26,11 @@ async function generate() {
   const today = new Date();
 
   data.forEach(topic => {
+    if (topic.updated) {
+      if (!latestDate || new Date(topic.updated) > new Date(latestDate)) {
+        latestDate = topic.updated;
+      }
+    }
     const from = topic.show_from ? new Date(topic.show_from) : null;
     const to = topic.show_to ? new Date(topic.show_to) : null;
     if (from && today < from) return;
@@ -85,6 +92,10 @@ async function generate() {
     <div class="container topbar-inner">
       <div class="brand"><span class="dot" aria-hidden="true"></span><div><h1>Nejvyhledávanější témata</h1><p class="sub">${topic.tag}</p></div></div>
       <div class="meta"><span class="chip">Detailní stránka tématu</span></div>
+      
+      <div class="meta">
+        <!-- ZMĚŇ: datum -->
+        <span class="chip">Aktualizováno: <strong>${topic.updated || ""}</strong></span>      </div>
     </div>
   </header>
   <main id="obsah">
@@ -131,23 +142,25 @@ async function generate() {
       .replace(/{{description}}/g, topic.description)
       .replace(/{{answer}}/g, topic.answer)
       .replace(/{{tag}}/g, topic.tag)
-      .replace(/{{slug}}/g, topic.slug);
-
+      .replace(/{{slug}}/g, topic.slug)
+      .replace(/{{updated}}/g, topic.updated || "");
+      
     topicsHTML += card + "\n";
 
   });
 
   // načteme index.html
-
-  let index = fs.readFileSync("../index.html", "utf8");
+  let index = fs.readFileSync("../templates/index-template.html", "utf8");
+  
+  // přidání datumu do indexu
+  index = index.replace("{{UPDATED}}", latestDate);
 
   // nahradíme blok témat
-
   index = index.replace(
     /<!--TOPICS-->([\s\S]*?)<!--TOPICS-END-->/,
     `<!--TOPICS-->
-${topicsHTML}
-<!--TOPICS-END-->`
+  ${topicsHTML}
+  <!--TOPICS-END-->`
   );
 
   fs.writeFileSync("../index.html", index);
