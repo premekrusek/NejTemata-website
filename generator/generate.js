@@ -48,7 +48,8 @@ async function generate() {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+  <link rel="icon" href="/images/favicon.ico" sizes="any">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
   <title>${topic.title}</title>
   <meta name="description" content="${topic.description}" />
 
