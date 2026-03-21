@@ -26,7 +26,7 @@ body{
 
 h1{
   margin-top: 10px;
-  margin-bottom: 45px;
+  margin-bottom: 35px;
 }
 
 a{ color: var(--accent); text-decoration: none; }
@@ -162,6 +162,12 @@ a:hover{ text-decoration: underline; }
   background: #fff;
   padding: 14px 14px 12px;
 }
+#related-topics{
+  margin-top: 35px;
+}
+.related-topics a{
+  color: var(--text);
+}
 .topic:hover{
   background: var(--soft);
 }
@@ -196,6 +202,9 @@ a:hover{ text-decoration: underline; }
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 10px 12px;
+}
+#answer{
+  margin-bottom: 25px;
 }
 .answer p{
   margin: 0;

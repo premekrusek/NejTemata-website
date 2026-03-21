@@ -106,13 +106,13 @@ async function generate() {
         <a class="back-link" href="../index.html">← Zpět na seznam témat</a>
         <div class="detail-card">
           <h1>${topic.title}</h1>
-          <p><strong>Rychlá odpověď:</strong> ${topic.answer}</p>
+          <p id="answer" class="answer"><strong>Rychlá odpověď:</strong> ${topic.answer}</p>
           ${topic.content
             .split(/\r?\n/)
             .filter(p => p.trim() !== "")
             .map(p => `<p>${p}</p>`)
             .join("")}
-          <h3>Související témata</h2>
+          <h3 id="related-topics">Související témata</h3>
           <ul class="related-topics">
             ${data
                 .filter(t => t.slug !== topic.slug && t.tag === topic.tag)
