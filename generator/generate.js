@@ -45,23 +45,24 @@ async function generate() {
     const page = `
 <!doctype html>
 <html lang="cs">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" href="/images/favicon.ico" sizes="any">
-  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
-  <title>${topic.title}</title>
-  <meta name="description" content="${topic.description}" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/images/favicon.ico" sizes="any">
+    <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+    <title>${topic.title}</title>
+    <meta name="description" content="${topic.description}" />
 
-  <link rel="canonical" href="https://nejtemata.com/topics/${topic.slug}.html" />
-  <meta property="og:title" content="${topic.title}">
-  <meta property="og:description" content="${topic.description}">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://nejtemata.com/topics/${topic.slug}.html">
-  <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://nejtemata.com/topics/${topic.slug}.html" />
+    <meta property="og:title" content="${topic.title}">
+    <meta property="og:description" content="${topic.description}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://nejtemata.com/topics/${topic.slug}.html">
+    <meta name="twitter:card" content="summary">
 
-  <script type="application/ld+json">
+    <script type="application/ld+json">
   {
    "@context": "https://schema.org",
    "@type": "Article",
@@ -71,7 +72,7 @@ async function generate() {
   }
   </script>
 
-  <script type="application/ld+json">
+    <script type="application/ld+json">
   {
    "@context": "https://schema.org",
    "@type": "FAQPage",
@@ -86,54 +87,87 @@ async function generate() {
   }
   </script>
 
-  <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../styles.css" />
 </head>
+
 <body>
-  <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand"><span class="dot" aria-hidden="true"></span><div><h1>Nejvyhledávanější témata</h1><p class="sub">${topic.tag}</p></div></div>
-      <div class="meta"><span class="chip">Detailní stránka tématu</span></div>
-      
-      <div class="meta">
-        <!-- ZMĚŇ: datum -->
-        <span class="chip">Aktualizováno: <strong>${topic.updated || ""}</strong></span>      </div>
-    </div>
-  </header>
-  <main id="obsah">
-    <section class="detail-hero">
-      <div class="container">
-        <a class="back-link" href="../index.html">← Zpět na seznam témat</a>
-        <div class="detail-card">
-          <h1>${topic.title}</h1>
-          <p id="answer" class="answer"><strong>Rychlá odpověď:</strong> ${topic.answer}</p>
-          ${topic.content
-            .split(/\r?\n/)
-            .filter(p => p.trim() !== "")
-            .map(p => `<p>${p}</p>`)
-            .join("")}
-          <h3 id="related-topics">Související témata</h3>
-          <ul class="related-topics">
-            ${data
-                .filter(t => t.slug !== topic.slug && t.tag === topic.tag)
-                .slice(0,3)
-                .map(t => `<li><a href="../topics/${t.slug}.html">${t.title}</a></li>`)
-                .join("")}
-          </ul>
+    <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <div class="brand"><span class="dot" aria-hidden="true"></span>
+                <div>
+                    <h1>Nejvyhledávanější témata</h1>
+                    <p class="sub">${topic.tag}</p>
+                </div>
+            </div>
+            <div class="meta"><span class="chip">Detailní stránka tématu</span></div>
+            <div class="meta">
+                <!-- ZMĚŇ: datum -->
+                <span class="chip">Aktualizováno: <strong>${topic.updated || ""}</strong></span>
+            </div>
         </div>
-      </div>
-    </section>
-  </main>
-<footer class="footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> Nejvyhledávanější témata</p>
-      <a class="muted" href="../legal/privacy.html">Zásady ochrany osobních údajů</a>
-      <a class="muted" href="../legal/contact.html">Kontakt</a>
-      <a class="muted" href="../legal/about.html">O webu</a>
-      <!--<p class="muted">Jednoduchá šablona • čisté UI • snadná aktualizace</p>-->
+    </header>
+
+    <div class="layout">
+        <!-- LEVÁ REKLAMA -->
+        <aside class="ads-left">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6863032239781691"
+                data-ad-slot="4480604080" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </aside>
+
+        <!-- OBSAH -->
+        <main class="content">
+            <!-- sem patří celý tvůj původní obsah indexu -->
+            <section class="detail-hero">
+                <div class="container">
+                    <a class="back-link" href="../index.html">← Zpět na seznam témat</a>
+                    <div class="detail-card">
+                        <h1>${topic.title}</h1>
+                        <p id="answer" class="answer"><strong>Rychlá odpověď:</strong> ${topic.answer}</p>
+                        ${topic.content
+                        .split(/\r?\n/)
+                        .filter(p => p.trim() !== "")
+                        .map(p => `<p>${p}</p>`)
+                        .join("")}
+                        <h3 id="related-topics">Související témata</h3>
+                        <ul class="related-topics">
+                            ${data
+                            .filter(t => t.slug !== topic.slug && t.tag === topic.tag)
+                            .slice(0, 3)
+                            .map(t => `<li><a href="../topics/${t.slug}.html">${t.title}</a></li>`)
+                            .join("")}
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- PRAVÁ REKLAMA -->
+        <aside class="ads-right">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6863032239781691"
+                data-ad-slot="7873054180" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </aside>
     </div>
-  </footer>  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-</body></html>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p>© <span id="year"></span> Nejvyhledávanější témata</p>
+            <a class="muted" href="../legal/privacy.html">Zásady ochrany osobních údajů</a>
+            <a class="muted" href="../legal/contact.html">Kontakt</a>
+            <a class="muted" href="../legal/about.html">O webu</a>
+            <!--<p class="muted">Jednoduchá šablona • čisté UI • snadná aktualizace</p>-->
+        </div>
+    </footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+
+</html>
 `;
 
     fs.writeFileSync(`../topics/${topic.slug}.html`, page);
@@ -147,14 +181,14 @@ async function generate() {
       .replace(/{{tag}}/g, topic.tag)
       .replace(/{{slug}}/g, topic.slug)
       .replace(/{{updated}}/g, topic.updated || "");
-      
+
     topicsHTML += card + "\n";
 
   });
 
   // načteme index.html
   let index = fs.readFileSync("../templates/index-template.html", "utf8");
-  
+
   // přidání datumu do indexu
   index = index.replace("{{UPDATED}}", latestDate);
 

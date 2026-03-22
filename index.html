@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="cs">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,38 +10,13 @@
   <title>NejTemata</title>
   <meta name="google-adsense-account" content="ca-pub-6863032239781691">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6863032239781691"
-     crossorigin="anonymous"></script>
-  <meta name="description" content="Nejvyhledávanější témata, trendy vyhledávání a odpovědi na populární otázky z internetu." />
+    crossorigin="anonymous"></script>
+  <meta name="description"
+    content="Nejvyhledávanější témata, trendy vyhledávání a odpovědi na populární otázky z internetu." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <div class="ads-left">
-    <!-- Adsense ad left -->
-    <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-6863032239781691"
-      data-ad-slot="4480604080"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </div>
-
-  <div class="ads-right">
-    <!-- Adsense ad right -->
-    <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-6863032239781691"
-      data-ad-slot="7873054180"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </div>
-
   <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
 
   <header class="topbar">
@@ -61,32 +37,46 @@
     </div>
   </header>
 
-  <main id="obsah">
-    <section class="search-wrap">
-      <div class="container">
-        <form class="search" role="search" onsubmit="return false">
-          <label class="sr-only" for="q">Hledat téma</label>
-          <input id="q" type="search" placeholder="Hledej podle názvu nebo tagu (např. „daně“, „AI“, „spánek“)…" />
-          <button type="button" onclick="runSearch()">Hledat</button>
-          <button type="button" class="ghost" onclick="resetSearch()">Zrušit</button>
-        </form>
+  <div class="layout">
 
-        <div class="count" aria-live="polite">
-          <span id="countText">Zobrazeno: <strong>0</strong></span>
+    <!-- LEVÁ REKLAMA -->
+    <aside class="ads-left">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6863032239781691" data-ad-slot="4480604080"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </aside>
+
+    <!-- OBSAH -->
+    <main class="content">
+
+      <!-- sem patří celý tvůj původní obsah indexu -->
+      <section class="search-wrap">
+        <div class="container">
+          <form class="search" role="search" onsubmit="return false">
+            <label class="sr-only" for="q">Hledat téma</label>
+            <input id="q" type="search" placeholder="Hledej podle názvu nebo tagu (např. „daně“, „AI“, „spánek“)…" />
+            <button type="button" onclick="runSearch()">Hledat</button>
+            <button type="button" class="ghost" onclick="resetSearch()">Zrušit</button>
+          </form>
+
+          <div class="count" aria-live="polite">
+            <span id="countText">Zobrazeno: <strong>0</strong></span>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="list-wrap" aria-label="Seznam témat">
-      <div class="container">
-        <!--
-          ✅ JAK UPRAVIT / PŘIDAT TÉMA:
-          1) Zkopíruj celý <li class="topic"> ... </li>
-          2) Uprav texty (název, popis, odpověď)
-          3) Uprav data-tags pro lepší hledání
-        -->
-        <ul class="topics" id="topics">
-          <!--TOPICS-->
+      <section class="list-wrap" aria-label="Seznam témat">
+        <div class="container">
+          <!--
+              ✅ JAK UPRAVIT / PŘIDAT TÉMA:
+              1) Zkopíruj celý <li class="topic"> ... </li>
+              2) Uprav texty (název, popis, odpověď)
+              3) Uprav data-tags pro lepší hledání
+            -->
+          <ul class="topics" id="topics">
+            <!--TOPICS-->
   <li class="topic" data-tags="Zdraví">
   <div class="topic-head">
     <h2>Spánek: jak ho zlepšit</h2>
@@ -137,15 +127,26 @@
 </li>
 
   <!--TOPICS-END-->
-        </ul>
+          </ul>
 
-        <div class="empty" id="empty" hidden>
-          <p>Nic nenalezeno. Zkus jiné slovo nebo zruš filtr.</p>
-          <button type="button" class="ghost" onclick="resetSearch()">Zobrazit vše</button>
+          <div class="empty" id="empty" hidden>
+            <p>Nic nenalezeno. Zkus jiné slovo nebo zruš filtr.</p>
+            <button type="button" class="ghost" onclick="resetSearch()">Zobrazit vše</button>
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
+
+    <!-- PRAVÁ REKLAMA -->
+    <aside class="ads-right">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6863032239781691" data-ad-slot="7873054180"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </aside>
+
+  </div>
 
   <footer class="footer">
     <div class="container footer-inner">
@@ -164,18 +165,18 @@
     const empty = document.getElementById('empty');
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    function norm(s){
+    function norm(s) {
       return (s || '')
         .toLowerCase()
         .normalize('NFD').replace(/\p{Diacritic}/gu, '')
         .trim();
     }
 
-    function renderCount(n){
+    function renderCount(n) {
       countText.innerHTML = 'Zobrazeno: <strong>' + n + '</strong>';
     }
 
-    function runSearch(){
+    function runSearch() {
       const query = norm(q.value);
       let shown = 0;
 
@@ -191,7 +192,7 @@
       empty.hidden = shown !== 0;
     }
 
-    function resetSearch(){
+    function resetSearch() {
       q.value = '';
       topics.forEach(li => li.hidden = false);
       empty.hidden = true;
@@ -206,4 +207,5 @@
     resetSearch();
   </script>
 </body>
+
 </html>
