@@ -36,6 +36,21 @@ h1 {
   margin-bottom: 35px;
 }
 
+h2 {
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+p {
+  margin-top: 9px;
+  margin-bottom: 0px;
+}
+
+ul {
+  margin-top: 9px;
+  margin-bottom: 0px;
+}
+
 a {
   color: var(--accent);
   text-decoration: none;
@@ -203,7 +218,7 @@ a:hover {
 }
 
 #related-topics {
-  margin-top: 35px;
+  margin-top: 0px;
 }
 
 .related-topics a {
@@ -248,11 +263,7 @@ a:hover {
   background: var(--soft);
   border: 1px solid var(--line);
   border-radius: 14px;
-  padding: 10px 12px;
-}
-
-#answer {
-  margin-bottom: 25px;
+  padding: 10px 12px; 
 }
 
 .answer p {
@@ -365,6 +376,10 @@ a:hover {
   border-radius: 20px;
   background: #fff;
   padding: 40px;
+}
+
+.card-space {
+  margin-top: 50px;
 }
 
 .detail-grid {

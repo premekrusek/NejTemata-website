@@ -126,19 +126,31 @@ async function generate() {
                     <a class="back-link" href="../index.html">← Zpět na seznam témat</a>
                     <div class="detail-card">
                         <h1>${topic.title}</h1>
-                        <p id="answer" class="answer"><strong>Rychlá odpověď:</strong> ${topic.answer}</p>
+                        <p class="answer"><strong>Rychlá odpověď:</strong> ${topic.answer}</p>
                         ${topic.content
                         .split(/\r?\n/)
                         .filter(p => p.trim() !== "")
                         .map(p => `<p>${p}</p>`)
                         .join("")}
-                        <h3 id="related-topics">Související témata</h3>
+                    </div>
+                    <div class="detail-card card-space">
+                        <h2 id="related-topics">Související témata</h2>
                         <ul class="related-topics">
-                            ${data
+                          ${data
                             .filter(t => t.slug !== topic.slug && t.tag === topic.tag)
                             .slice(0, 3)
                             .map(t => `<li><a href="../topics/${t.slug}.html">${t.title}</a></li>`)
                             .join("")}
+                        </ul>
+                        <h2>Zdroje</h2>
+                        <ul class="related-topics">
+                          ${topic.sources
+                            ? topic.sources
+                                .split(/\r?\n/) // 🔥 rozdělí podle řádku
+                                .filter(s => s.trim() !== "")
+                                .map(url => `<li><a href="${url.trim()}" target="_blank" rel="noopener">${url.trim()}</a></li>`)
+                                .join("")
+                            : ""}
                         </ul>
                     </div>
                 </div>
