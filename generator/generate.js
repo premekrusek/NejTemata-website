@@ -137,7 +137,11 @@ async function generate() {
                         <h2 id="related-topics">Související témata</h2>
                         <ul class="related-topics">
                           ${data
-                            .filter(t => t.slug !== topic.slug && t.tag === topic.tag)
+                            .filter(t => {
+                              if (t.slug === topic.slug) return false;
+                              const currentTags = topic.tag.split(",").map(tag => tag.trim().toLowerCase());
+                              const otherTags = t.tag.split(",").map(tag => tag.trim().toLowerCase());
+                              return currentTags.some(tag => otherTags.includes(tag));})
                             .slice(0, 3)
                             .map(t => `<li><a href="../topics/${t.slug}.html">${t.title}</a></li>`)
                             .join("")}
